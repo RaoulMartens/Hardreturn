@@ -14,8 +14,33 @@ const CasesPage = () => {
                 </div>
             </section>
 
-            <section className="section bg-white">
-                <div className="container">
+            <section className="section bg-white" style={{ position: 'relative', minHeight: '600px' }}>
+                {/* Overlay */}
+                <div style={{
+                    position: 'absolute',
+                    inset: 0,
+                    zIndex: 10,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: 'rgba(255, 255, 255, 0.6)',
+                    backdropFilter: 'blur(4px)'
+                }}>
+                    <div style={{
+                        background: 'var(--color-hard)',
+                        color: 'white',
+                        padding: '2rem 4rem',
+                        borderRadius: '0.5rem',
+                        textAlign: 'center',
+                        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+                    }}>
+                        <h2 style={{ fontSize: '2rem', marginBottom: '0.5rem', color: 'white' }}>In Ontwikkeling</h2>
+                        <p style={{ color: '#cbd5e1' }}>We leggen de laatste hand aan onze uitgebreide cases.</p>
+                    </div>
+                </div>
+
+                <div className="container" style={{ filter: 'blur(12px)', userSelect: 'none', pointerEvents: 'none' }}>
                     <div className="grid" style={{ gap: '4rem' }}>
 
                         {/* Case 1: Hovenier */}

@@ -23,7 +23,7 @@ const Header = () => {
     const navLinks = [
         { name: 'Onze Methode', path: '/methode' },
         { name: 'Cases', path: '/cases' },
-        { name: 'Kennisbank', path: '/kennisbank' },
+        { name: 'Contact', path: '/contact' },
     ];
 
     const solutions = [

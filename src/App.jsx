@@ -32,8 +32,7 @@ function App() {
         <Route path="/oplossingen/:slug" element={<SolutionPage />} />
         <Route path="/methode" element={<MethodPage />} />
         <Route path="/cases" element={<CasesPage />} />
-        <Route path="/kennisbank" element={<PlaceholderPage title="Kennisbank" />} />
-        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/contact" element={<PlaceholderPage />} />
       </Routes>
       <Footer />
       <StickyBar />
