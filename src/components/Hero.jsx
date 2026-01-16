@@ -49,7 +49,7 @@ const Hero = () => {
 
           <h1 style={{
             color: 'white',
-            marginBottom: '1.5rem',
+            marginBottom: '2rem',
             lineHeight: 1.1,
             fontSize: 'clamp(2rem, 5.5vw, 5rem)',
             textAlign: 'center',
@@ -102,7 +102,7 @@ const Hero = () => {
 
           <div style={{ maxWidth: '700px', marginBottom: '3rem' }}>
             <TextEffect per="word" preset="blur" delay={0.4} className="text-lg text-slate-400">
-              Wij bouwen geen passieve websites, maar renderende business tools. HardReturn legt de digitale fundering waarop hoveniers, installateurs en interieurbouwers hun bedrijf naar een moderne onderneming transformeren.
+              We bouwen websites die er goed uitzien én die werken.
             </TextEffect>
           </div>
 
@@ -111,7 +111,7 @@ const Hero = () => {
             style={{ gap: '1rem', justifyContent: 'center' }}
             initial={{ opacity: 0, y: 20, filter: 'blur(5px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            transition={{ delay: 3.6, duration: 1.5, ease: "easeOut" }}
+            transition={{ delay: 1.5, duration: 1.5, ease: "easeOut" }}
           >
             <motion.a
               href="#contact"

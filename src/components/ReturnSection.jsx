@@ -43,10 +43,10 @@ const ReturnSection = () => {
             <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1rem' }}>
                 <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
                     <h2 style={{ marginBottom: '1rem', fontSize: '2.5rem', color: '#0f172a' }}>
-                        Geen Kostenpost, Maar Een Investering
+                        Dit doen we anders
                     </h2>
                     <p style={{ fontSize: '1.2rem', color: '#64748b' }}>
-                        Uw website moet geld opleveren. Punt. Wij bouwen systemen die bezoekers actief transformeren tot betalende klanten.
+                        We bouwen websites die er goed uitzien én die verkopen. Voor een hoveniersbedrijf betekent dat prachtige foto's van tuinen met een lead-formulier dat werkt. Voor een keukenbouwer betekent dat een showroom waar je verliefd wordt, gecombineerd met duidelijkheid over prijs en proces.
                     </p>
                 </div>
 
@@ -83,7 +83,7 @@ const ReturnSection = () => {
                                     </h3>
                                 </div>
                                 <div style={{ fontSize: '1rem', color: '#64748b', marginBottom: '1.5rem', maxWidth: '90%' }}>
-                                    Uw website filtert 24/7 de vrijblijvende aanvragen ertussenuit. U spreekt alleen de klanten met budget &amp; haast.
+                                    Je site filtert onzin eruit. We bouwen formulieren en processen die zorgen dat alleen serieuze klanten langskomen.
                                 </div>
                                 <div style={{
                                     flexGrow: 1,
@@ -169,7 +169,7 @@ const ReturnSection = () => {
                                 </div>
                                 <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#1e293b', marginBottom: '0.5rem' }}>Vindbaar in AI</h3>
                                 <p style={{ fontSize: '0.9rem', color: '#64748b', lineHeight: 1.4, flexGrow: 1 }}>
-                                    Niet alleen Google. Wij optimaliseren voor <strong>ChatGPT</strong> & <strong>Claude</strong>.
+                                    Niet alleen Google. Wij optimaliseren ook voor <strong>ChatGPT</strong> & <strong>Claude</strong>.
                                 </p>
                             </div>
                         </BlueprintTile>

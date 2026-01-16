@@ -6,12 +6,11 @@ const Footer = () => {
             <div className="container footer-grid">
                 {/* Column 1: Brand */}
                 <div className="footer-col">
-                    <div style={{ fontFamily: 'Nanobananapro, sans-serif', fontSize: '1.5rem', fontWeight: 'bold', color: 'white', letterSpacing: '-0.02em', marginBottom: '1rem' }}>
+                    <div style={{ fontFamily: 'Nanobananapro, sans-serif', fontSize: '1.5rem', fontWeight: 'bold', color: 'white', letterSpacing: '-0.02em', marginBottom: '0' }}>
                         Hardreturn
                     </div>
                     <p style={{ lineHeight: 1.6, marginBottom: '1.5rem' }}>
-                        De digitale architect voor vakmensen die technische perfectie begrijpen.
-                        Wij bouwen geen websites, maar renderende business tools.
+                        We maken websites die zowel mooi als effectief zijn. Voor vakmannen die willen groeien.
                     </p>
                     <div className="flex" style={{ gap: '1rem' }}>
                         {/* Social Placeholders */}

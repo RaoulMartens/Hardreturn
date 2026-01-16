@@ -40,9 +40,9 @@ const YieldCalculator = () => {
                     variants={containerVariants}
                     style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}
                 >
-                    <motion.h2 variants={itemVariants} style={{ color: 'var(--color-hard)', marginBottom: '1rem' }}>Bereken uw Potentieel</motion.h2>
+                    <motion.h2 variants={itemVariants} style={{ color: 'var(--color-hard)', marginBottom: '1rem' }}>Wat zou je kunnen verdienen?</motion.h2>
                     <motion.p variants={itemVariants} style={{ fontSize: '1.2rem', color: '#64748b', marginBottom: '3rem' }}>
-                        Geen loze beloftes, maar een realistische projectie op basis van technische optimalisatie.
+                        Geen giswerk. Je geeft 3 getallen in, we laten zien waar je zou kunnen staan.
                     </motion.p>
                 </motion.div>
 
@@ -60,7 +60,7 @@ const YieldCalculator = () => {
                             {/* Visitors Slider */}
                             <div style={{ marginBottom: '2rem' }}>
                                 <div className="flex justify-between items-end" style={{ marginBottom: '0.5rem' }}>
-                                    <label style={{ fontWeight: 600 }}>Maandelijkse Bezoekers</label>
+                                    <label style={{ fontWeight: 600 }}>Bezoekers / maand</label>
                                     <span style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--color-hard)' }}>{visitors}</span>
                                 </div>
                                 <input
@@ -77,7 +77,7 @@ const YieldCalculator = () => {
                             {/* Order Value Slider */}
                             <div style={{ marginBottom: '2rem' }}>
                                 <div className="flex justify-between items-end" style={{ marginBottom: '0.5rem' }}>
-                                    <label style={{ fontWeight: 600 }}>Gemiddelde Orderwaarde</label>
+                                    <label style={{ fontWeight: 600 }}>Orderwaarde</label>
                                     <span style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--color-hard)' }}>€{orderValue}</span>
                                 </div>
                                 <input
@@ -94,7 +94,7 @@ const YieldCalculator = () => {
                             {/* Current Conversion Slider */}
                             <div style={{ marginBottom: '2rem' }}>
                                 <div className="flex justify-between items-end" style={{ marginBottom: '0.5rem' }}>
-                                    <label style={{ fontWeight: 600 }}>Huidige Conversie</label>
+                                    <label style={{ fontWeight: 600 }}>Conversie %</label>
                                     <span style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--color-hard)' }}>{conversion}%</span>
                                 </div>
                                 <input
@@ -114,8 +114,8 @@ const YieldCalculator = () => {
                             {/* Calculation Explanation */}
                             <div style={{ background: '#f1f5f9', padding: '1rem', borderRadius: '4px', fontSize: '0.9rem', borderLeft: '3px solid var(--color-return)' }}>
                                 <div className="flex justify-between" style={{ marginBottom: '0.5rem' }}>
-                                    <span>Huidig Rendement:</span>
-                                    <span style={{ color: '#64748b' }}>€{currentRevenue.toLocaleString('nl-NL')}</span>
+                                    <span>Huidige Omzet:</span>
+                                    <div style={{ color: '#64748b', fontSize: '0.9rem' }}>€{currentRevenue.toLocaleString('nl-NL')}</div>
                                 </div>
                                 <div className="flex justify-between text-strong" style={{ color: 'var(--color-hard-dark)' }}>
                                     <span>Optimale Performance (+35%):</span>
@@ -147,10 +147,10 @@ const YieldCalculator = () => {
                             </div>
 
                             <button className="btn btn-primary" style={{ marginTop: 'auto' }}>
-                                Start Analyse
+                                Bereken je potentieel
                             </button>
                             <div style={{ fontSize: '0.8rem', color: '#cbd5e1', marginTop: '1rem' }}>
-                                *Berekening gebaseerd op gemiddelde uplift na technische optimalisatie. Resultaten variëren.
+                                *Dit is gebaseerd op wat we gemiddeld zien. Jouw site is anders, dus jouw resultaat ook.
                             </div>
                         </motion.div>
                     </div>

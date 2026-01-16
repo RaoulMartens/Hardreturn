@@ -4,7 +4,7 @@ import HardSection from './HardSection';
 import ReturnSection from './ReturnSection';
 import PortfolioSection from './PortfolioSection';
 import YieldCalculator from './YieldCalculator';
-import GuaranteeSection from './GuaranteeSection';
+
 import ContactSection from './ContactSection';
 import AnimatedSection from './AnimatedSection';
 
@@ -37,9 +37,7 @@ const HomePage = () => {
                 <PortfolioSection />
             </AnimatedSection>
 
-            <AnimatedSection delay={0.1}>
-                <GuaranteeSection />
-            </AnimatedSection>
+
 
             <AnimatedSection delay={0.1}>
                 <ContactSection />

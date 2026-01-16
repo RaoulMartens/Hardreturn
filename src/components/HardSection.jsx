@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Zap, CheckCircle, Gauge } from 'lucide-react';
+import lighthouseImg from '../assets/lighthouse.jpg';
 
 const HardSection = () => {
     return (
@@ -14,13 +15,13 @@ const HardSection = () => {
                         transition={{ duration: 0.6 }}
                     >
                         <h2 style={{ marginBottom: '1.5rem', color: 'var(--color-hard)' }}>
-                            IJzersterke techniek als basis
+                            Herken je dit?
                         </h2>
                         <p style={{ fontSize: '1.1rem', marginBottom: '1.5rem', color: '#64748b' }}>
-                            Onze websites staan als een huis. Wij bouwen met de nieuwste frameworks en AI-integraties voor ongekende snelheid en schaalbaarheid. Geen verouderde systemen, maar een unieke digitale constructie die uw autoriteit in de markt bevestigt.
+                            Je website staat er mooi bij, maar je agenda blijft halfleeg. Of je krijgt veel reacties, maar 9 van de 10 zijn niet serieus. Je weet niet eens hoeveel bezoekers je maandelijks haalt. Je ziet dat je concurrenten beter vindbaar zijn. En ja, jij bent beter in je vak dan zij.
                         </p>
                         <ul style={{ listStyle: 'none', display: 'grid', gap: '1rem' }}>
-                            {['Razendsnelle prestaties', 'Duurzame hosting (CO2 Neutraal)', 'Schaalbare architectuur'].map((item, i) => (
+                            {['Je mailbox stroomt vol met koopjesjagers en vrijblijvende aanvragen', 'Je ziet concurrenten boven jou eindigen in Google en ChatGPT', 'Je website is een statisch visitekaartje dat geld kost'].map((item, i) => (
                                 <motion.li
                                     key={i}
                                     className="flex items-center"
@@ -37,48 +38,29 @@ const HardSection = () => {
                         </ul>
                     </motion.div>
 
-                    {/* Visual: Performance Score Card */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                        style={{
-                            background: 'white',
-                            padding: '2.5rem',
-                            borderRadius: '1rem',
-                            border: '1px solid #e2e8f0',
-                            position: 'relative',
-                            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)'
-                        }}
+                        transition={{ delay: 0.2, duration: 0.6 }}
+                        style={{ position: 'relative', height: '100%', minHeight: '400px', overflow: 'hidden' }}
                     >
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem' }}>
-                            <div style={{ padding: '0.5rem', background: '#dcfce7', borderRadius: '0.5rem' }}>
-                                <Zap size={24} color="#16a34a" />
-                            </div>
-                            <span style={{ fontWeight: 700, color: '#0f172a', fontSize: '1.2rem' }}>Google PageSpeed</span>
-                        </div>
-
-                        <div style={{ display: 'flex', alignItems: 'flex-end', gap: '1rem', marginBottom: '2rem' }}>
-                            <div style={{ fontSize: '5rem', fontWeight: 900, lineHeight: 1, color: '#16a34a', letterSpacing: '-0.05em' }}>
-                                100
-                            </div>
-                            <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#94a3b8', marginBottom: '0.75rem' }}>
-                                / 100
-                            </div>
-                        </div>
-
-                        <div style={{ display: 'grid', gap: '1rem' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '1rem', background: '#f8fafc', borderRadius: '0.75rem' }}>
-                                <CheckCircle size={20} color="#16a34a" />
-                                <span style={{ fontWeight: 600, color: '#334155' }}>Core Web Vitals Passed</span>
-                            </div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '1rem', background: '#f8fafc', borderRadius: '0.75rem' }}>
-                                <Gauge size={20} color="#16a34a" />
-                                <span style={{ fontWeight: 600, color: '#334155' }}>&lt; 0.5s Laadtijd</span>
-                            </div>
-                        </div>
+                        <img
+                            src={lighthouseImg}
+                            alt="Vuurtoren in mist"
+                            style={{
+                                width: '100%',
+                                height: '100%',
+                                objectFit: 'cover',
+                            }}
+                        />
+                        <div style={{
+                            position: 'absolute',
+                            inset: 0,
+                            background: 'linear-gradient(to top, rgba(15,23,42,0.4), transparent)'
+                        }}></div>
                     </motion.div>
+
                 </div>
             </div>
         </section>
