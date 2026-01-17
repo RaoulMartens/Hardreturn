@@ -1,124 +1,228 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import ContactSection from './ContactSection';
-import { MapPin, Phone, Mail, CheckCircle2 } from 'lucide-react';
-import heroImg from '../assets/hero.webp';
+import { MapPin, Phone, Mail, Send } from 'lucide-react';
 
 const PlaceholderPage = () => {
     return (
-        <div style={{ paddingTop: 'var(--header-height)', minHeight: '100vh', background: 'var(--color-bg)' }}>
+        <div style={{
+            minHeight: '100vh',
+            background: '#f8fafc', // Light/White background
+            paddingTop: 'calc(var(--header-height) + 4rem)',
+            paddingBottom: '4rem',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+        }}>
 
-            {/* Header / Intro */}
-            <section className="section text-white relative overflow-hidden" style={{
-                padding: '10rem 0 8rem 0',
-                backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url(${heroImg})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center'
-            }}>
-                <div style={{
-                    position: 'absolute',
-                    top: '-50%',
-                    right: '-20%',
-                    width: '80%',
-                    height: '200%',
-                    background: 'radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 60%)',
-                    pointerEvents: 'none'
-                }}></div>
-                <div className="container relative z-10">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        style={{ maxWidth: '800px' }}
-                    >
-                        <h1 style={{ fontSize: 'clamp(3rem, 6vw, 5rem)', marginBottom: '2rem', lineHeight: 1.1, color: 'white', fontWeight: 'var(--font-weight-heavy)', letterSpacing: '-0.02em' }}>
-                            Wij zijn <span style={{ color: 'var(--color-return)' }}>HardReturn</span>
-                        </h1>
-                        <p style={{ fontSize: '1.5rem', color: '#94a3b8', lineHeight: 1.5, maxWidth: '650px', fontWeight: 400 }}>
-                            Wij bouwen websites die er goed uitzien én die verkopen. Geen templates, geen loze beloftes, maar meetbaar resultaat voor vakmensen die willen groeien.
-                        </p>
-                    </motion.div>
-                </div>
-            </section>
+            <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
+                {/* Flex Container for Desktop Side-by-Side */}
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4rem', alignItems: 'flex-start' }}>
 
-            {/* About Us & Info */}
-            <section className="section bg-white" style={{ padding: '8rem 0' }}>
-                <div className="container">
-                    <div className="grid lg:grid-cols-12 items-start" style={{ gap: '6rem' }}>
-
-                        {/* Text Content */}
-                        <div className="lg:col-span-7" style={{ maxWidth: '720px' }}>
-                            <h2 style={{ fontSize: '2.5rem', color: 'var(--color-hard)', marginBottom: '2rem', fontWeight: 'var(--font-weight-heavy)', letterSpacing: '-0.01em' }}>
-                                Waarom wij dit doen
-                            </h2>
-                            <div style={{ color: '#475569', fontSize: '1.125rem', lineHeight: 1.8, display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-                                <p>
-                                    Wij zagen te veel vakmensen met prachtige projecten maar waardeloze websites. Websites die traag waren, niet gevonden werden, of eruitzagen alsof ze in 2010 waren gebouwd.
-                                </p>
-                                <p>
-                                    Daarom zijn wij HardReturn gestart. Wij combineren technisch vakmanschap (snelheid, SEO, data) met visueel meesterschap (design, fotografie, beleving).
-                                </p>
-                            </div>
-
-                            <div style={{ marginTop: '4rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                                <a href="mailto:info@hardreturn.nl" className="group flex items-center gap-4 text-slate-600 hover:text-blue-600 transition-colors no-underline">
-                                    <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-blue-50 transition-colors">
-                                        <Mail size={20} />
-                                    </div>
-                                    <span style={{ fontSize: '1.1rem', fontWeight: 'var(--font-weight-heavy)' }}>info@hardreturn.nl</span>
-                                </a>
-                                <a href="tel:+310630433623" className="group flex items-center gap-4 text-slate-600 hover:text-green-600 transition-colors no-underline">
-                                    <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-green-50 transition-colors">
-                                        <Phone size={20} />
-                                    </div>
-                                    <span style={{ fontSize: '1.1rem', fontWeight: 'var(--font-weight-heavy)' }}>+31 (06) 304 336 23</span>
-                                </a>
-                                <div className="flex items-center gap-4 text-slate-600">
-                                    <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center">
-                                        <MapPin size={20} />
-                                    </div>
-                                    <span style={{ fontSize: '1.1rem', fontWeight: 'var(--font-weight-heavy)' }}>Arnhem, NL</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Promise Visual */}
-                        <div className="lg:col-span-5">
-                            <div style={{
-                                background: 'var(--color-hard)',
-                                padding: '3rem',
-                                borderRadius: '1.5rem',
-                                color: 'white',
-                                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-                                position: 'relative',
-                                overflow: 'hidden'
+                    {/* Left: Form Card (White) */}
+                    <div style={{
+                        flex: '2 1 600px',
+                        background: 'white',
+                        padding: '3rem',
+                        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.1)',
+                        position: 'relative'
+                    }}>
+                        {/* Title */}
+                        <div style={{ marginBottom: '2.5rem' }}>
+                            <h2 style={{
+                                fontFamily: 'var(--font-heading)',
+                                fontSize: '2rem',
+                                margin: 0,
+                                color: 'var(--color-hard)',
+                                fontWeight: 'var(--font-weight-heavy)',
+                                letterSpacing: 'var(--font-letter-spacing-tight)'
                             }}>
-
-                                <h3 style={{ fontSize: '1.75rem', marginBottom: '2rem', fontWeight: 'var(--font-weight-heavy)', color: 'white' }}>Onze Belofte</h3>
-                                <ul style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                                    {[
-                                        'Geen "uurtje-factuurtje", maar vaste prijzen.',
-                                        'Wij spreken jouw taal, niet jargon.',
-                                        'Je website is pas af als hij geld oplevert.'
-                                    ].map((item, i) => (
-                                        <li key={i} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start', fontSize: '1.1rem', color: '#cbd5e1', lineHeight: 1.5 }}>
-                                            <CheckCircle2 size={24} style={{ color: 'var(--color-return)', flexShrink: 0, marginTop: '2px' }} />
-                                            <span>{item}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-
-                                <div style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-                                    <p style={{ fontSize: '0.9rem', color: '#94a3b8', fontStyle: 'italic' }}>
-                                        "Wij bouwen geen kostenposten, maar investeringen."
-                                    </p>
-                                </div>
-                            </div>
+                                Wij helpen je graag!
+                            </h2>
                         </div>
 
+                        {/* Form */}
+                        <form style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                            <div>
+                                <label style={{
+                                    display: 'block', marginBottom: '0.5rem',
+                                    fontSize: '0.8rem', // Slightly increased for readability
+                                    fontFamily: 'var(--font-primary)',
+                                    fontWeight: 'var(--font-weight-bold)',
+                                    color: '#94a3b8',
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.05em'
+                                }}>Naam</label>
+                                <input type="text" style={{
+                                    width: '100%',
+                                    padding: '1rem',
+                                    border: 'none',
+                                    borderRadius: 0,
+                                    fontSize: '1rem',
+                                    fontFamily: 'var(--font-body)',
+                                    outline: 'none',
+                                    background: '#f1f5f9',
+                                    color: 'var(--color-text)'
+                                }} />
+                            </div>
+
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label style={{
+                                        display: 'block', marginBottom: '0.5rem',
+                                        fontSize: '0.8rem',
+                                        fontFamily: 'var(--font-primary)',
+                                        fontWeight: 'var(--font-weight-bold)',
+                                        color: '#94a3b8',
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '0.05em'
+                                    }}>E-mail</label>
+                                    <input type="email" style={{
+                                        width: '100%',
+                                        padding: '1rem',
+                                        border: 'none',
+                                        borderRadius: 0,
+                                        fontSize: '1rem',
+                                        fontFamily: 'var(--font-body)',
+                                        outline: 'none',
+                                        background: '#f1f5f9',
+                                        color: 'var(--color-text)'
+                                    }} />
+                                </div>
+                                <div>
+                                    <label style={{
+                                        display: 'block', marginBottom: '0.5rem',
+                                        fontSize: '0.8rem',
+                                        fontFamily: 'var(--font-primary)',
+                                        fontWeight: 'var(--font-weight-bold)',
+                                        color: '#94a3b8',
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '0.05em'
+                                    }}>Telefoonnummer (Optioneel)</label>
+                                    <input type="tel" style={{
+                                        width: '100%',
+                                        padding: '1rem',
+                                        border: 'none',
+                                        borderRadius: 0,
+                                        fontSize: '1rem',
+                                        fontFamily: 'var(--font-body)',
+                                        outline: 'none',
+                                        background: '#f1f5f9',
+                                        color: 'var(--color-text)'
+                                    }} />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label style={{
+                                    display: 'block', marginBottom: '0.5rem',
+                                    fontSize: '0.8rem',
+                                    fontFamily: 'var(--font-primary)',
+                                    fontWeight: 'var(--font-weight-bold)',
+                                    color: '#94a3b8',
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.05em'
+                                }}>Bericht</label>
+                                <textarea rows="6" style={{
+                                    width: '100%',
+                                    padding: '1rem',
+                                    border: 'none',
+                                    borderRadius: 0,
+                                    fontSize: '1rem',
+                                    fontFamily: 'var(--font-body)',
+                                    outline: 'none',
+                                    background: '#f1f5f9',
+                                    color: 'var(--color-text)',
+                                    resize: 'vertical'
+                                }}></textarea>
+                            </div>
+
+                            <div style={{ marginTop: '1rem' }}>
+                                <button type="submit" className="btn btn-primary" style={{
+                                    padding: '1rem 3rem',
+                                    fontSize: '1rem',
+                                    fontFamily: 'var(--font-heading)',
+                                    background: 'var(--color-return)'
+                                }}>
+                                    VERSTUUR
+                                </button>
+                            </div>
+                        </form>
                     </div>
+
+                    {/* Right: Sidebar Info */}
+                    <div style={{ flex: '1 1 300px', paddingTop: '1rem' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+
+                            <div>
+                                <h4 style={{
+                                    fontSize: '0.8rem',
+                                    fontFamily: 'var(--font-primary)',
+                                    fontWeight: 'var(--font-weight-bold)',
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.1em',
+                                    color: '#94a3b8',
+                                    marginBottom: '0.5rem'
+                                }}>Mail Ons:</h4>
+                                <a href="mailto:info@hardreturn.nl" style={{
+                                    fontSize: '1.5rem',
+                                    fontFamily: 'var(--font-heading)',
+                                    color: 'var(--color-hard)',
+                                    fontWeight: 'var(--font-weight-bold)',
+                                    textDecoration: 'none',
+                                    letterSpacing: 'var(--font-letter-spacing-tight)'
+                                }}>info@hardreturn.nl</a>
+                            </div>
+
+                            <div>
+                                <h4 style={{
+                                    fontSize: '0.8rem',
+                                    fontFamily: 'var(--font-primary)',
+                                    fontWeight: 'var(--font-weight-bold)',
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.1em',
+                                    color: '#94a3b8',
+                                    marginBottom: '0.5rem'
+                                }}>Bel Ons:</h4>
+                                <a href="tel:+310630433623" style={{
+                                    fontSize: '1.5rem',
+                                    fontFamily: 'var(--font-heading)',
+                                    color: 'var(--color-hard)',
+                                    fontWeight: 'var(--font-weight-bold)',
+                                    textDecoration: 'none',
+                                    letterSpacing: 'var(--font-letter-spacing-tight)'
+                                }}>06 304 336 23</a>
+                            </div>
+
+                            <div>
+                                <h4 style={{
+                                    fontSize: '0.8rem',
+                                    fontFamily: 'var(--font-primary)',
+                                    fontWeight: 'var(--font-weight-bold)',
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.1em',
+                                    color: '#94a3b8',
+                                    marginBottom: '0.5rem'
+                                }}>Bezoek Ons:</h4>
+                                <a href="#" style={{
+                                    fontSize: '1.5rem',
+                                    fontFamily: 'var(--font-heading)',
+                                    color: 'var(--color-hard)',
+                                    fontWeight: 'var(--font-weight-bold)',
+                                    lineHeight: 1.3,
+                                    display: 'block',
+                                    textDecoration: 'none',
+                                    letterSpacing: 'var(--font-letter-spacing-tight)'
+                                }}>
+                                    Arnhem<br />
+                                    Gelderland
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
-            </section>
+            </div>
         </div>
     );
 };

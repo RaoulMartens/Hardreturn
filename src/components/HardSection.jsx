@@ -5,7 +5,7 @@ const HardSection = () => {
     return (
         <section id="hard" className="section bg-white" style={{ overflow: 'hidden' }}>
             <div className="container">
-                <div className="grid" style={{ gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '4rem', alignItems: 'center' }}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -15,8 +15,8 @@ const HardSection = () => {
                         <h2 style={{ marginBottom: '1.5rem', color: 'var(--color-hard-dark)' }}>
                             Herken je dit?
                         </h2>
-                        <p style={{ marginBottom: '1.5rem' }}>
-                            Je website staat er mooi bij, maar je agenda blijft halfleeg. Of je krijgt veel reacties, maar 9 van de 10 zijn niet serieus. Je weet niet eens hoeveel bezoekers je maandelijks haalt. Je ziet dat je concurrenten beter vindbaar zijn.
+                        <p style={{ marginBottom: '1.5rem', maxWidth: '560px' }}>
+                            Je website staat er mooi bij, maar je agenda blijft halfleeg. Je krijgt veel reacties, maar 9 van de 10 zijn niet serieus. Je weet niet eens hoeveel bezoekers je maandelijks haalt. Je ziet dat je concurrenten beter vindbaar zijn.
                         </p>
                         <ul style={{ listStyle: 'none', display: 'grid', gap: '1rem' }}>
                             {['Je mailbox stroomt vol met koopjesjagers en vrijblijvende aanvragen', 'Je ziet concurrenten boven jou eindigen in Google en ChatGPT', 'Je website is een statisch visitekaartje dat geld kost'].map((item, i) => (

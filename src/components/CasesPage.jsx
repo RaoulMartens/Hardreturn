@@ -1,17 +1,60 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import casesBg from '../assets/craftsmanship_detail_weld.webp';
 
 const CasesPage = () => {
+    const containerRef = useRef(null);
+    const { scrollY } = useScroll();
+
+    // Parallax & Scale effects for Hero
+    const heroY = useTransform(scrollY, [0, 1000], [0, 200]);
+    const heroScale = useTransform(scrollY, [0, 800], [1, 1.1]);
+
     return (
-        <div style={{ paddingTop: 'var(--header-height)', minHeight: '100vh', background: 'var(--color-bg)' }}>
-            <section className="section bg-hard" style={{ padding: '6rem 0' }}>
-                <div className="container" style={{ textAlign: 'center' }}>
-                    <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', color: 'white', marginBottom: '1.5rem' }}>
-                        Projecten die renderen
+        <div style={{ minHeight: '100vh', background: 'var(--color-bg)' }}>
+            {/* Full Screen Hero with Image & Parallax */}
+            <section style={{
+                height: '100dvh',
+                minHeight: '600px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textAlign: 'center',
+                position: 'relative',
+                overflow: 'hidden',
+                background: 'var(--color-hard-dark)'
+            }}>
+                {/* Background Image with Overlay */}
+                <motion.div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0, y: heroY, scale: heroScale }}>
+                    <img src={casesBg} alt="" style={{ width: '100%', height: '120%', objectFit: 'cover', opacity: 0.2, filter: 'grayscale(100%)', marginTop: '-10%' }} />
+                    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'linear-gradient(to bottom, rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.8))' }} />
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
+                    style={{ position: 'relative', zIndex: 10, padding: '0 2rem' }}
+                >
+                    <span style={{
+                        fontSize: '0.9rem',
+                        fontWeight: 'var(--font-weight-heavy)',
+                        color: 'var(--color-return)',
+                        letterSpacing: '0.4em',
+                        textTransform: 'uppercase',
+                        marginBottom: '1.5rem',
+                        display: 'block',
+                    }}>
+                        Ons Werk
+                    </span>
+                    <h1 className="h1-xl" style={{ color: 'white' }}>
+                        Projecten die<br />renderen
                     </h1>
-                    <p style={{ fontSize: '1.25rem', color: '#cbd5e1', maxWidth: '700px', margin: '0 auto' }}>
+                    <p style={{ fontSize: 'clamp(1rem, 2vw, 1.25rem)', color: '#cbd5e1', maxWidth: '700px', margin: '0 auto', opacity: 0.9 }}>
                         Ontdek hoe wij vakmensen hebben geholpen bij de transitie naar een moderne online autoriteit.
                     </p>
-                </div>
+                </motion.div>
             </section>
 
             <section className="section bg-white" style={{ position: 'relative', minHeight: '600px' }}>

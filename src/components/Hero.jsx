@@ -1,8 +1,8 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
 import { TextEffect } from './ui/text-effect';
 
 
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import heroBg from '../assets/hero.webp';
 
@@ -15,19 +15,12 @@ const Hero = () => {
   // Gentle zoom-in effect for depth
   const scale = useTransform(scrollY, [0, 800], [1, 1.1]);
 
-  const words = ['Meetbaar', 'Zichtbaar', 'Winstgevend'];
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentWordIndex((prev) => (prev + 1) % words.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <section ref={containerRef} className="section bg-hard" style={{
-      height: '100vh',
+      height: '100dvh', // Mobile browser friendly
+      minHeight: '600px', // Prevent squashing on landscape
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -53,65 +46,37 @@ const Hero = () => {
 
           <h1 className="h1-xl" style={{
             color: 'white',
-            marginBottom: '2rem',
+            marginBottom: '1.5rem',
             textAlign: 'center',
             width: '100%',
-            textTransform: 'none'
+            textTransform: 'none',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 'clamp(0.2rem, 1vw, 0.5rem)'
           }}>
-            <span className="block whitespace-normal sm:whitespace-nowrap">
-              <TextEffect as="span" per="word" preset="blur" delay={0.1}>
-                Uw vakmanschap verdient
-              </TextEffect>
-            </span>
-
-            <div
-              className="grid gap-x-0 sm:gap-x-1"
-              style={{
-                gridTemplateColumns: 'auto auto',
-                marginTop: '0.5rem',
-                alignItems: 'baseline',
-                justifyContent: 'center'
-              }}
-            >
-              <AnimatePresence mode="wait">
-                <TextEffect
-                  key={words[currentWordIndex]}
-                  per="word"
-                  preset="blur"
-                  variants={{
-                    item: {
-                      exit: { opacity: 0, filter: 'blur(4px)', y: -10, transition: { duration: 0.4 } }
-                    }
-                  }}
-                  className="whitespace-nowrap text-right"
-                  style={{ color: '#f97316' }}
-                >
-                  {words[currentWordIndex]}
-                </TextEffect>
-              </AnimatePresence>
-
-              <TextEffect
-                as="span"
-                per="word"
-                preset="blur"
-                delay={0.2}
-                className="whitespace-nowrap text-left"
-                segmentWrapperClassName="bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent"
-              >
-                Meesterschap
-              </TextEffect>
-            </div>
+            <TextEffect as="span" per="word" preset="blur" delay={0.1}>
+              Uw vakmanschap verdient meesterschap
+            </TextEffect>
           </h1>
 
-          <div style={{ maxWidth: '700px', marginBottom: '3rem' }}>
-            <TextEffect per="word" preset="blur" delay={0.4} className="text-lg text-slate-400">
-              We bouwen websites die er goed uitzien én goed werken.
+          <div style={{
+            display: 'flex',
+            gap: '1rem',
+            justifyContent: 'center',
+            marginBottom: '2rem',
+            color: 'var(--color-return)',
+            fontWeight: 'var(--font-weight-heavy)',
+            fontSize: 'clamp(0.9rem, 2vw, 1.1rem)',
+            flexWrap: 'wrap'
+          }}>
+            <TextEffect as="span" per="word" preset="blur" delay={0.3}>
+              Meetbaar • Zichtbaar • Winstgevend
             </TextEffect>
           </div>
 
           <motion.div
-            className="flex flex-col sm:flex-row"
-            style={{ gap: '1rem', justifyContent: 'center' }}
+            className="flex flex-row flex-wrap"
+            style={{ gap: '0.75rem', justifyContent: 'center', width: '100%' }}
             initial={{ opacity: 0, y: 20, filter: 'blur(5px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ delay: 1.5, duration: 1.5, ease: "easeOut" }}
@@ -119,7 +84,17 @@ const Hero = () => {
             <motion.a
               href="#contact"
               className="btn btn-primary"
-              style={{ fontSize: '0.9rem', padding: '1.2rem 2.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', justifyContent: 'center' }}
+              style={{
+                fontSize: 'clamp(0.75rem, 2vw, 0.9rem)',
+                padding: 'clamp(0.8rem, 2vw, 1.2rem) clamp(1rem, 2vw, 2.5rem)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                justifyContent: 'center',
+                minWidth: 'auto',
+                flex: '1 1 auto',
+                maxWidth: '300px'
+              }}
               whileHover="hover"
               whileTap={{ scale: 0.95 }}
               variants={{
@@ -134,7 +109,7 @@ const Hero = () => {
                 transition={{ duration: 0.1 }}
                 style={{ display: 'inline-flex' }}
               >
-                <ArrowRight size={20} />
+                <ArrowRight size={16} />
               </motion.span>
             </motion.a>
             <motion.a
@@ -144,11 +119,15 @@ const Hero = () => {
                 border: '1px solid rgba(255,255,255,0.2)',
                 color: 'white',
                 background: 'rgba(255,255,255,0.05)',
-                fontSize: '0.85rem',
+                fontSize: 'clamp(0.75rem, 2vw, 0.85rem)',
+                padding: 'clamp(0.8rem, 2vw, 1.2rem) clamp(1rem, 2vw, 2.5rem)',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.5rem',
-                justifyContent: 'center'
+                gap: '0.4rem',
+                justifyContent: 'center',
+                minWidth: 'auto',
+                flex: '1 1 auto',
+                maxWidth: '300px'
               }}
               whileHover="hover"
               whileTap={{ scale: 0.95 }}
@@ -164,7 +143,7 @@ const Hero = () => {
                 transition={{ duration: 0.1 }}
                 style={{ display: 'inline-flex' }}
               >
-                <ArrowRight size={18} />
+                <ArrowRight size={16} />
               </motion.span>
             </motion.a>
           </motion.div>

@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import methodBg from '../assets/method_vision_blueprint.webp';
 
 const MethodModule = React.forwardRef(({ number, title, description, features, index, isMobile }, ref) => {
     return (
@@ -105,10 +106,15 @@ const MethodModule = React.forwardRef(({ number, title, description, features, i
 
 const MethodPage = () => {
     const containerRef = useRef(null);
+    const { scrollY } = useScroll();
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start center", "end center"]
     });
+
+    // Parallax & Scale effects for Hero
+    const heroY = useTransform(scrollY, [0, 1000], [0, 200]);
+    const heroScale = useTransform(scrollY, [0, 800], [1, 1.1]);
 
     const lastModuleRef = useRef(null);
     const [lastModuleHeight, setLastModuleHeight] = React.useState(0);
@@ -168,21 +174,30 @@ const MethodPage = () => {
 
     return (
         <div style={{ background: 'var(--color-bg)', color: 'var(--color-text)' }}>
-            {/* Approved Reform-Style Hero */}
+            {/* Full Screen Hero with Image & Parallax */}
             <section style={{
-                minHeight: '80vh',
+                height: '100dvh',
+                minHeight: '600px',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
                 textAlign: 'center',
-                padding: 'var(--spacing-xl) 2rem',
-                background: 'radial-gradient(circle at top, #f8fafc 0%, #ffffff 100%)'
+                position: 'relative',
+                overflow: 'hidden',
+                background: 'var(--color-hard-dark)'
             }}>
+                {/* Background Image with Overlay */}
+                <motion.div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0, y: heroY, scale: heroScale }}>
+                    <img src={methodBg} alt="" style={{ width: '100%', height: '120%', objectFit: 'cover', opacity: 0.25, filter: 'grayscale(100%)', marginTop: '-10%' }} />
+                    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'linear-gradient(to bottom, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9))' }} />
+                </motion.div>
+
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
+                    style={{ position: 'relative', zIndex: 10, padding: '0 2rem' }}
                 >
                     <span style={{
                         fontSize: '0.9rem',
@@ -190,12 +205,12 @@ const MethodPage = () => {
                         color: 'var(--color-return)',
                         letterSpacing: '0.4em',
                         textTransform: 'uppercase',
-                        marginBottom: '2rem',
+                        marginBottom: '1.5rem',
                         display: 'block',
                     }}>
                         Onze Methode
                     </span>
-                    <h1 className="h1-xl">
+                    <h1 className="h1-xl" style={{ color: 'white' }}>
                         Systeem voor<br />zichtbaar resultaat
                     </h1>
                 </motion.div>

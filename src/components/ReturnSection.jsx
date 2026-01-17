@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Bot, Sparkles, TrendingUp, Settings, Leaf, Check, ArrowRight, CheckCircle2, Calendar } from 'lucide-react';
 import craftsmanshipImage from '../assets/craftsmanship_detail_weld.webp';
 
-const BlueprintTile = ({ children, style, label, delay = 0 }) => (
+const BlueprintTile = ({ children, style, label, delay = 0, className }) => (
     <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -20,6 +20,7 @@ const BlueprintTile = ({ children, style, label, delay = 0 }) => (
             boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
             ...style
         }}
+        className={className}
     >
         <div style={{
             position: 'absolute',
@@ -45,24 +46,30 @@ const ReturnSection = () => {
                         Dit doen we anders
                     </h2>
                     <p>
-                        We bouwen websites die er goed uitzien én die verkopen. Voor een hoveniersbedrijf betekent dat prachtige foto's van tuinen met een lead-formulier dat werkt. Voor een keukenbouwer betekent dat een showroom waar je verliefd wordt, gecombineerd met duidelijkheid over prijs en proces.
+                        Een goede website ziet er niet alleen strak uit, maar werkt actief voor je bedrijf.
+                        Wij bouwen geen pagina’s, maar samenhangende tools die bezoekers sturen, kwalificeren en omzetten in afspraken.
                     </p>
                 </div>
 
                 <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                    gap: '1.5rem',
-                    autoRows: 'minmax(250px, auto)'
+                    width: '100%'
                 }}>
                     {/* Desktop Grid Layout Adjustment */}
                     <style>{`
+                        /* Mobile Styles */
+                        .tile-large {
+                            height: 380px; /* Truncate on mobile */
+                        }
+
                         @media (min-width: 1024px) {
                             .bento-grid {
                                 grid-template-columns: repeat(4, 1fr) !important;
                                 grid-template-rows: repeat(2, 300px) !important;
                             }
-                            .tile-large { grid-column: span 2; }
+                            .tile-large { 
+                                grid-column: span 2; 
+                                height: auto; /* Full height on desktop */
+                            }
                             .tile-tall { grid-row: span 2; }
                             .tile-wide { grid-column: span 2; }
                         }
@@ -71,7 +78,7 @@ const ReturnSection = () => {
                     <div className="bento-grid" style={{ display: 'grid', gap: '1.5rem', width: '100%' }}>
 
                         {/* 1. Large Tile: Smart Tool (Lead Gen Focus) */}
-                        <BlueprintTile className="tile-large" style={{ gridColumn: 'span 2' }} label="01 // SMART CONFIGURATOR">
+                        <BlueprintTile className="tile-large" label="01 // SMART CONFIGURATOR">
                             <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
                                     <div>
@@ -140,7 +147,7 @@ const ReturnSection = () => {
                         </BlueprintTile>
 
                         {/* 2. Photo Tile: Technical Craft (Modern Dutch Design) */}
-                        <BlueprintTile style={{ gridColumn: 'span 2' }} label="MOD.02 // TECHNISCH FUNDAMENT">
+                        <BlueprintTile className="tile-wide" label="MOD.02 // TECHNISCH FUNDAMENT">
                             <div style={{
                                 position: 'absolute',
                                 inset: 0,
@@ -244,7 +251,7 @@ const ReturnSection = () => {
                         </BlueprintTile>
 
                         {/* 4. Medium Tile: AEO Visibility */}
-                        <BlueprintTile style={{ gridColumn: 'span 2' }} label="04 // AEO DOMINANTIE" delay={0.1}>
+                        <BlueprintTile className="tile-wide" label="04 // AEO DOMINANTIE" delay={0.1}>
                             <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
                                     <Sparkles size={20} color="var(--color-return)" />

@@ -40,9 +40,9 @@ const SolutionPage = () => {
     if (!content) return null;
 
     return (
-        <div style={{ paddingTop: 'var(--header-height)', minHeight: '100vh', background: 'var(--color-bg)' }}>
+        <div style={{ minHeight: '100vh', background: 'var(--color-bg)' }}>
             {/* Hero Section */}
-            <section className="section bg-hard" style={{ padding: '6rem 0' }}>
+            <section className="section bg-hard" style={{ paddingTop: 'calc(var(--header-height) + 6rem)', paddingBottom: '6rem' }}>
                 <div className="container">
                     <div style={{ maxWidth: '800px' }}>
                         <div style={{

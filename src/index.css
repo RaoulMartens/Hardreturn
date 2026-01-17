@@ -60,6 +60,7 @@
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Metrophobic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
 /* Modern Dutch Design - HardReturn */
 :root {
@@ -75,9 +76,9 @@
   --color-border: #e2e8f0;
 
   /* Typography Control Center */
-  --font-primary: 'Metrophobic', system-ui, -apple-system, sans-serif;
-  --font-secondary: 'Metrophobic', system-ui, -apple-system, sans-serif;
-  --font-logo: 'Nanobananapro', 'Inter', sans-serif;
+  --font-primary: 'Inter', system-ui, sans-serif;
+  --font-secondary: 'Metrophobic', system-ui, sans-serif;
+  --font-logo: 'Metrophobic', sans-serif;
 
   /* Font Weights (Standardized for global swappability) */
   --font-weight-normal: 400;
@@ -87,7 +88,7 @@
   /* Increased for slightly more title weight */
 
   /* Typography Scale */
-  --text-h1-xl: clamp(2rem, 5.5vw, 5rem);
+  --text-h1-xl: clamp(2.5rem, 8vw, 6.5rem);
   --text-h1: clamp(2.5rem, 5vw, 4.5rem);
   --text-h2: clamp(2rem, 4vw, 3rem);
   --text-h3: 1.5rem;
@@ -97,8 +98,8 @@
   --font-line-height-tight: 1.1;
 
   /* Heading & Body Mapping */
-  --font-heading: var(--font-primary);
-  --font-body: var(--font-primary);
+  --font-heading: 'Metrophobic', sans-serif;
+  --font-body: 'Inter', sans-serif;
 
   /* Legacy Aliases (Ensures all components follow central control) */
   --font-weight-heavy: var(--font-weight-normal);
@@ -145,8 +146,8 @@ h6 {
   font-family: var(--font-heading);
   color: var(--color-text-strong);
   line-height: var(--font-line-height-tight);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--font-letter-spacing-tight);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: -0.02em;
 }
 
 h1 {

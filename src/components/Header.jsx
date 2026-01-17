@@ -37,9 +37,9 @@ const Header = () => {
             <div className="container" style={{ position: 'relative', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 2em', maxWidth: '100%' }}>
                 {/* Logo */}
                 <Link to="/" style={{
-                    fontFamily: 'Nanobananapro, sans-serif',
+                    fontFamily: 'var(--font-logo)',
                     fontSize: '1.4rem',
-                    fontWeight: 500,
+                    fontWeight: 'bold',
                     color: 'white',
                     letterSpacing: '-0.02em',
                     textDecoration: 'none',

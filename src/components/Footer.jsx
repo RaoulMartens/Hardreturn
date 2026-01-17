@@ -6,7 +6,7 @@ const Footer = () => {
             <div className="container footer-grid">
                 {/* Column 1: Brand */}
                 <div className="footer-col">
-                    <div style={{ fontFamily: 'Nanobananapro, sans-serif', fontSize: '1.5rem', fontWeight: 'bold', color: 'white', letterSpacing: '-0.02em', marginBottom: '0' }}>
+                    <div style={{ fontFamily: 'var(--font-logo)', fontSize: '1.5rem', fontWeight: 'bold', color: 'white', letterSpacing: '-0.02em', marginBottom: '0' }}>
                         Hardreturn
                     </div>
                     <p style={{ lineHeight: 1.6, marginBottom: '1.5rem' }}>
