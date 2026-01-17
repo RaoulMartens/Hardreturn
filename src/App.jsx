@@ -1,15 +1,35 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import HomePage from './components/HomePage';
-import SolutionPage from './components/SolutionPage';
-import MethodPage from './components/MethodPage';
-import CasesPage from './components/CasesPage';
-import ContactPage from './components/ContactPage';
-import PlaceholderPage from './components/PlaceholderPage';
-import StickyBar from './components/StickyBar';
 import AIChatbot from './components/AIChatbot';
 import Footer from './components/Footer';
+
+// Lazy load route components for code splitting
+const SolutionPage = React.lazy(() => import('./components/SolutionPage'));
+const MethodPage = React.lazy(() => import('./components/MethodPage'));
+const CasesPage = React.lazy(() => import('./components/CasesPage'));
+const PlaceholderPage = React.lazy(() => import('./components/PlaceholderPage'));
+
+// Loading fallback component
+const PageLoader = () => (
+  <div style={{
+    minHeight: '100vh',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background: 'var(--color-bg)'
+  }}>
+    <div style={{
+      width: '40px',
+      height: '40px',
+      border: '3px solid #e2e8f0',
+      borderTopColor: 'var(--color-return)',
+      borderRadius: '50%',
+      animation: 'spin 1s linear infinite'
+    }} />
+  </div>
+);
 
 // ScrollToTop component to reset scroll on route change
 const ScrollToTop = () => {
@@ -27,15 +47,16 @@ function App() {
     <Router>
       <ScrollToTop />
       <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/oplossingen/:slug" element={<SolutionPage />} />
-        <Route path="/methode" element={<MethodPage />} />
-        <Route path="/cases" element={<CasesPage />} />
-        <Route path="/contact" element={<PlaceholderPage />} />
-      </Routes>
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/oplossingen/:slug" element={<SolutionPage />} />
+          <Route path="/methode" element={<MethodPage />} />
+          <Route path="/cases" element={<CasesPage />} />
+          <Route path="/contact" element={<PlaceholderPage />} />
+        </Routes>
+      </Suspense>
       <Footer />
-      <StickyBar />
       <AIChatbot />
     </Router>
   );

@@ -1,123 +1,254 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+
+const MethodModule = React.forwardRef(({ number, title, description, features, index, isMobile }, ref) => {
+    return (
+        <div
+            ref={ref}
+            className="method-module"
+            style={{
+                padding: isMobile ? '4rem 0' : '8vw 0',
+                borderBottom: '1px solid var(--color-border)',
+                background: index % 2 === 0 ? 'var(--color-bg)' : 'var(--color-bg-alt)',
+                position: 'relative'
+            }}
+        >
+            <div className="container" style={{
+                display: 'grid',
+                gridTemplateColumns: isMobile ? '1fr' : '60px 1.2fr 1.5fr',
+                gap: isMobile ? '2rem' : '4rem',
+                alignItems: 'start',
+                position: 'relative',
+                zIndex: 2
+            }}>
+                {/* Left Gutter: Number only */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center'
+                    }}
+                >
+                    <span style={{
+                        fontSize: '0.9rem',
+                        fontWeight: 'var(--font-weight-heavy)',
+                        color: 'white',
+                        background: 'var(--color-hard-dark)',
+                        width: '40px',
+                        height: '40px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        position: 'relative',
+                        zIndex: 10
+                    }}>
+                        {number}
+                    </span>
+                </motion.div>
+
+                {/* Middle: Title */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
+                >
+                    <h2>{title}</h2>
+                </motion.div>
+
+                {/* Right: Description & Pillars */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
+                >
+                    <p style={{ marginBottom: '3rem' }}>{description}</p>
+
+                    <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+                        gap: '0.75rem'
+                    }}>
+                        {features.map((feature, fIndex) => (
+                            <div
+                                key={fIndex}
+                                style={{
+                                    padding: '0.85rem 1.25rem',
+                                    border: '1px solid var(--color-border)',
+                                    fontSize: '0.8rem',
+                                    fontWeight: 'var(--font-weight-heavy)',
+                                    color: 'var(--color-hard-dark)',
+                                    background: 'var(--color-bg)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '0.75rem',
+                                    boxShadow: '0 2px 4px rgba(0,0,0,0.02)',
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.05em'
+                                }}
+                            >
+                                <span style={{ color: 'var(--color-return)', fontSize: '1rem' }}>+</span>
+                                {feature}
+                            </div>
+                        ))}
+                    </div>
+                </motion.div>
+            </div>
+        </div>
+    );
+});
 
 const MethodPage = () => {
-    const steps = [
+    const containerRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start center", "end center"]
+    });
+
+    const lastModuleRef = useRef(null);
+    const [lastModuleHeight, setLastModuleHeight] = React.useState(0);
+
+    React.useEffect(() => {
+        const updateHeight = () => {
+            if (lastModuleRef.current) {
+                setLastModuleHeight(lastModuleRef.current.offsetHeight);
+            }
+        };
+        updateHeight();
+        window.addEventListener('resize', updateHeight);
+        return () => window.removeEventListener('resize', updateHeight);
+    }, []);
+
+    const [isMobile, setIsMobile] = React.useState(false);
+
+    React.useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    const scaleY = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
+
+    const modules = [
         {
             number: '01',
-            title: 'De Blauwdruk (Strategie & Inzicht)',
-            description: 'Elk renderend project begint bij een scherpe blauwdruk. Wij duiken diep in jouw business case en de specifieke klantreis binnen jouw niche om te bepalen waar de groeikansen liggen. In plaats van te mikken op "zoveel mogelijk kliks", richten we ons op het elimineren van vrijblijvende leads door jouw ideale klantprofiel scherp te definiëren. We leggen een strategisch fundament dat gericht is op lokale dominantie en autoriteitsopbouw.',
-            icon: '📐'
+            title: 'Analyse & Strategie',
+            description: 'We beginnen met een diepe duik in jouw bedrijf. Wie ben je, wat doe je, en wie wil je bereiken? Geen giswerk, maar data-gedreven keuzes die de basis leggen voor succes.',
+            features: ['Business Analyse', 'Doelgroep Segmentatie', 'Concurrentie Onderzoek', 'Conversie Strategie']
         },
         {
             number: '02',
-            title: 'De Fundering (De "Hard"-kant)',
-            description: 'Een website zonder solide techniek is als een huis zonder fundering. Wij bouwen op bewezen technieken zoals WordPress en Elementor Pro, wat zorgt voor een unieke interface zonder de noodzaak voor complexe, trage code. Onze technische standaarden zijn onwrikbaar:',
-            points: [
-                'Snelheid: Websites die in minder dan 3 seconden laden, cruciaal voor mobiele gebruikers en SEO.',
-                'Duurzaamheid: Wij pionieren in duurzaam webdesign, waarbij we de CO2-uitstoot per paginabezoek vaak onder de 1 gram houden.',
-                'Toegankelijkheid: Als WCAG-specialist zorgen we voor een logische structuur die bruikbaar is voor iedereen.'
-            ],
-            icon: '🏗️'
+            title: 'Krachtig Bouwen',
+            description: 'Jouw digitale fundering moet onverwoestbaar zijn. We bouwen met de nieuwste technieken voor maximale snelheid, veiligheid en een systeem dat met je meegroeit.',
+            features: ['Performance Optimalisatie', 'Clean Code Architectuur', 'SEO-Ready Structuur', 'Beveiliging & Schaalbaarheid']
         },
         {
             number: '03',
-            title: 'De Afwerking (Visual-First Design)',
-            description: 'In sectoren waar het resultaat esthetisch is, zoals bij hoveniers en interieurarchitecten, is de visuele kracht van je portfolio de doorslaggevende factor voor succes. Wij hanteren een "Visual First" strategie, waarbij hoogwaardige projectfotografie en video\'s jouw vakmanschap tastbaar maken voor de klant. Het design is modern, nuchter en sophisticated: het straalt autoriteit uit zonder arrogantie.',
-            icon: '🎨'
+            title: 'Visueel Meesterschap',
+            description: 'Uiterlijk is meer dan een mooi plaatje. Het is de vertaling van jouw vakmanschap naar een visuele taal die direct vertrouwen wekt en jouw kwaliteit uitstraalt.',
+            features: ['High-End UI/UX Design', 'Brand Identity Alignment', 'Mobile-First Ervaring', 'Psychologische Conversie']
         },
         {
             number: '04',
-            title: 'De Machine (De "Return"-kant)',
-            description: 'Zodra de constructie staat, activeren we de systemen die zorgen voor rendement. We bouwen niet alleen een site, maar implementeren slimme business tools zoals lead-automatisering en sector-specifieke calculators (bijv. een Warmtepomp Check of Ketelkiezer).',
-            points: [
-                'Kwalificatie: Onze systemen filteren aanvragen op basis van budget en termijn, zodat je alleen nog maar aan tafel zit bij serieuze klanten.',
-                'AEO (AI Optimization): Wij optimaliseren je content zodat je niet alleen in Google, maar ook in AI-modellen zoals ChatGPT en Claude naar voren komt.',
-                'Meetbaarheid: Via real-time dashboards maken we jouw online succes inzichtelijk, zodat meesterschap ook echt meetbaar wordt.'
-            ],
-            icon: '⚙️'
+            title: 'Meetbare Groei',
+            description: 'Een website is een instrument, geen eindstation. We monitoren de resultaten continu en sturen bij waar nodig om jouw business naar het volgende niveau te tillen.',
+            features: ['Real-time Analytics', 'A/B Testen & Optimalisatie', 'Harde KPI Rapportage', 'Continue Doorontwikkeling']
         }
     ];
 
     return (
-        <div style={{ paddingTop: 'var(--header-height)', minHeight: '100vh', background: 'var(--color-bg)' }}>
-            {/* Hero / Intro Section */}
-            <section className="section bg-white" style={{ padding: '6rem 0 4rem 0' }}>
-                <div className="container" style={{ maxWidth: '900px', textAlign: 'center' }}>
-                    <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', color: 'var(--color-hard)', marginBottom: '1.5rem', lineHeight: 1.1 }}>
-                        De Digitale Hoofdaannemer
+        <div style={{ background: 'var(--color-bg)', color: 'var(--color-text)' }}>
+            {/* Approved Reform-Style Hero */}
+            <section style={{
+                minHeight: '80vh',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textAlign: 'center',
+                padding: 'var(--spacing-xl) 2rem',
+                background: 'radial-gradient(circle at top, #f8fafc 0%, #ffffff 100%)'
+            }}>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
+                >
+                    <span style={{
+                        fontSize: '0.9rem',
+                        fontWeight: 'var(--font-weight-heavy)',
+                        color: 'var(--color-return)',
+                        letterSpacing: '0.4em',
+                        textTransform: 'uppercase',
+                        marginBottom: '2rem',
+                        display: 'block',
+                    }}>
+                        Onze Methode
+                    </span>
+                    <h1 className="h1-xl">
+                        Systeem voor<br />zichtbaar resultaat
                     </h1>
-                    <p style={{ fontSize: '1.2rem', lineHeight: 1.6, color: '#64748b' }}>
-                        HardReturn werkt niet als een standaard marketingbureau; wij fungeren als jouw digitale hoofdaannemer. Waar jij de expert bent op de bouwplaats of in de studio, coördineren wij de volledige digitale constructie—van de technische fundering tot de esthetische afwerking. Wij begrijpen de "vaktaal" van het Nederlandse vakmanschap en vertalen jouw meesterschap naar een afspraakmachine die staat als een huis.
-                    </p>
-                </div>
+                </motion.div>
             </section>
 
-            {/* Steps Section */}
-            <section className="section bg-alt" style={{ padding: '4rem 0' }}>
-                <div className="container">
-                    <div className="grid highlight-grid" style={{ gridTemplateColumns: '1fr', gap: '3rem' }}>
-                        {steps.map((step, index) => (
-                            <div key={index} className="flex flex-col md:grid md:grid-cols-[min-content_1fr]" style={{
-                                position: 'relative',
-                                padding: '2rem',
-                                background: 'white',
-                                borderRadius: '1rem',
-                                border: '1px solid #e2e8f0',
-                                gap: '2rem',
-                                alignItems: 'start'
-                            }}>
-                                <div style={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center',
-                                    gap: '0.5rem'
-                                }}>
-                                    <div style={{ fontSize: '3rem', fontWeight: 900, color: 'var(--color-return)', lineHeight: 1 }}>
-                                        {step.number}
-                                    </div>
-                                    <div style={{ fontSize: '2.5rem' }}>{step.icon}</div>
-                                </div>
-
-                                <div>
-                                    <h3 style={{ marginBottom: '1rem', color: 'var(--color-hard)', fontSize: '1.5rem' }}>{step.title}</h3>
-                                    <p style={{ color: '#64748b', lineHeight: 1.6, marginBottom: step.points ? '1rem' : '0' }}>{step.description}</p>
-
-                                    {step.points && (
-                                        <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: '0.5rem' }}>
-                                            {step.points.map((point, i) => (
-                                                <li key={i} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start', fontSize: '0.95rem', color: '#475569' }}>
-                                                    <span style={{ color: 'var(--color-return)', fontWeight: 'bold' }}>•</span>
-                                                    <span>{point}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    )}
-                                </div>
-                            </div>
-                        ))}
+            {/* Modules with Journey Line */}
+            <section ref={containerRef} style={{ position: 'relative', paddingBottom: '10rem' }}>
+                {!isMobile && (
+                    <div style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        pointerEvents: 'none',
+                        zIndex: 1
+                    }}>
+                        <div className="container" style={{ position: 'relative', height: '100%' }}>
+                            <motion.div
+                                style={{
+                                    position: 'absolute',
+                                    left: 'calc(var(--spacing-sm) + 30px)',
+                                    top: 'calc(8vw + 20px)',
+                                    bottom: isMobile ? 0 : `calc(${lastModuleHeight}px - (8vw + 20px) + 10rem)`,
+                                    width: '1px',
+                                    background: 'var(--color-border)'
+                                }}
+                            />
+                            <motion.div
+                                style={{
+                                    position: 'absolute',
+                                    left: 'calc(var(--spacing-sm) + 29px)',
+                                    top: 'calc(8vw + 20px)',
+                                    bottom: isMobile ? 0 : `calc(${lastModuleHeight}px - (8vw + 20px) + 10rem)`,
+                                    width: '3px',
+                                    background: 'var(--color-return)',
+                                    scaleY,
+                                    transformOrigin: 'top'
+                                }}
+                            />
+                        </div>
                     </div>
+                )}
 
-                    {/* Closing / CTA */}
-                    <div style={{ marginTop: '6rem', background: '#1e293b', padding: '4rem 2rem', borderRadius: '1rem', textAlign: 'center', color: 'white' }}>
-                        <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', color: 'white' }}>Klaar voor de bouw?</h2>
-                        <p style={{ fontSize: '1.2rem', color: '#cbd5e1', maxWidth: '700px', margin: '0 auto 2.5rem auto' }}>
-                            Ben jij een ambitieuze vakspecialist die de transitie wil maken naar een moderne onderneming? Laten we samen bouwen aan een digitale fundering die net zo sterk is als jouw eigen werk.
-                        </p>
-                        <a href="#contact" className="btn btn-primary" style={{
-                            display: 'inline-block',
-                            background: 'var(--color-return)',
-                            color: 'white',
-                            padding: '1rem 2rem',
-                            borderRadius: '0.5rem',
-                            fontWeight: 700,
-                            textDecoration: 'none',
-                            fontSize: '1.1rem'
-                        }}>
-                            Plan een Strategische Sessie
-                        </a>
-                    </div>
-                </div>
+                {modules.map((module, index) => (
+                    <MethodModule
+                        key={index}
+                        ref={index === modules.length - 1 ? lastModuleRef : null}
+                        {...module}
+                        index={index}
+                        isMobile={isMobile}
+                    />
+                ))}
             </section>
         </div>
     );

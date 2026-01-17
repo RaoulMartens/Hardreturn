@@ -90,7 +90,7 @@ const AIChatbot = () => {
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        fontWeight: 600
+                        fontWeight: 'var(--font-weight-heavy)'
                     }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                             <span>HardReturn Assistant</span>
@@ -220,7 +220,7 @@ const AIChatbot = () => {
                         marginBottom: '0',
                         cursor: 'pointer'
                     }} onClick={() => setIsOpen(true)}>
-                        <span style={{ fontWeight: 600, color: 'var(--color-hard)' }}>Hulp nodig?</span> Chat met ons!
+                        <span style={{ fontWeight: 'var(--font-weight-heavy)', color: 'var(--color-hard)' }}>Hulp nodig?</span> Chat met ons!
                     </div>
 
                     <button

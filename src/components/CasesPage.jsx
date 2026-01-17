@@ -50,7 +50,7 @@ const CasesPage = () => {
                                     🌿
                                 </div>
                                 <h2 style={{ color: 'var(--color-hard)', marginBottom: '0.5rem' }}>Hovenier in Utrecht</h2>
-                                <div style={{ color: 'var(--color-return)', fontWeight: 600 }}>Sector: Tuinontwerp & Aanleg</div>
+                                <div style={{ color: 'var(--color-return)', fontWeight: 'var(--font-weight-heavy)' }}>Sector: Tuinontwerp & Aanleg</div>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                                 <div>
@@ -63,7 +63,7 @@ const CasesPage = () => {
                                 </div>
                                 <div style={{ background: '#f0fdf4', padding: '1.5rem', borderRadius: '0.5rem', border: '1px solid #bbf7d0' }}>
                                     <h4 style={{ textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.85rem', color: '#166534', marginBottom: '0.5rem' }}>De Return</h4>
-                                    <p style={{ color: '#15803d', fontWeight: 600 }}>12 gekwalificeerde afspraken per maand (+€50k omzet/jaar).</p>
+                                    <p style={{ color: '#15803d', fontWeight: 'var(--font-weight-heavy)' }}>12 gekwalificeerde afspraken per maand (+€50k omzet/jaar).</p>
                                 </div>
                             </div>
                         </div>
@@ -75,7 +75,7 @@ const CasesPage = () => {
                                     🔧
                                 </div>
                                 <h2 style={{ color: 'var(--color-hard)', marginBottom: '0.5rem' }}>Duurzame Installateur</h2>
-                                <div style={{ color: 'var(--color-return)', fontWeight: 600 }}>Sector: Installatietechniek</div>
+                                <div style={{ color: 'var(--color-return)', fontWeight: 'var(--font-weight-heavy)' }}>Sector: Installatietechniek</div>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                                 <div>
@@ -88,7 +88,7 @@ const CasesPage = () => {
                                 </div>
                                 <div style={{ background: '#f0fdf4', padding: '1.5rem', borderRadius: '0.5rem', border: '1px solid #bbf7d0' }}>
                                     <h4 style={{ textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.85rem', color: '#166534', marginBottom: '0.5rem' }}>De Return</h4>
-                                    <p style={{ color: '#15803d', fontWeight: 600 }}>Conversie van 8% naar 35%. Bellers zijn nu technisch onderlegd.</p>
+                                    <p style={{ color: '#15803d', fontWeight: 'var(--font-weight-heavy)' }}>Conversie van 8% naar 35%. Bellers zijn nu technisch onderlegd.</p>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +100,7 @@ const CasesPage = () => {
                                     🪵
                                 </div>
                                 <h2 style={{ color: 'var(--color-hard)', marginBottom: '0.5rem' }}>Keukenbouwer</h2>
-                                <div style={{ color: 'var(--color-return)', fontWeight: 600 }}>Sector: Interieurbouw</div>
+                                <div style={{ color: 'var(--color-return)', fontWeight: 'var(--font-weight-heavy)' }}>Sector: Interieurbouw</div>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                                 <div>
@@ -113,7 +113,7 @@ const CasesPage = () => {
                                 </div>
                                 <div style={{ background: '#f0fdf4', padding: '1.5rem', borderRadius: '0.5rem', border: '1px solid #bbf7d0' }}>
                                     <h4 style={{ textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.85rem', color: '#166534', marginBottom: '0.5rem' }}>De Return</h4>
-                                    <p style={{ color: '#15803d', fontWeight: 600 }}>Gemiddelde offerteaanvraag steeg van €3k naar €8k.</p>
+                                    <p style={{ color: '#15803d', fontWeight: 'var(--font-weight-heavy)' }}>Gemiddelde offerteaanvraag steeg van €3k naar €8k.</p>
                                 </div>
                             </div>
                         </div>

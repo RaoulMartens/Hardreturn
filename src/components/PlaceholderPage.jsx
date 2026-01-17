@@ -31,7 +31,7 @@ const PlaceholderPage = () => {
                         transition={{ duration: 0.6 }}
                         style={{ maxWidth: '800px' }}
                     >
-                        <h1 style={{ fontSize: 'clamp(3rem, 6vw, 5rem)', marginBottom: '2rem', lineHeight: 1.1, color: 'white', fontWeight: 700, letterSpacing: '-0.02em' }}>
+                        <h1 style={{ fontSize: 'clamp(3rem, 6vw, 5rem)', marginBottom: '2rem', lineHeight: 1.1, color: 'white', fontWeight: 'var(--font-weight-heavy)', letterSpacing: '-0.02em' }}>
                             Wij zijn <span style={{ color: 'var(--color-return)' }}>HardReturn</span>
                         </h1>
                         <p style={{ fontSize: '1.5rem', color: '#94a3b8', lineHeight: 1.5, maxWidth: '650px', fontWeight: 400 }}>
@@ -48,7 +48,7 @@ const PlaceholderPage = () => {
 
                         {/* Text Content */}
                         <div className="lg:col-span-7" style={{ maxWidth: '720px' }}>
-                            <h2 style={{ fontSize: '2.5rem', color: 'var(--color-hard)', marginBottom: '2rem', fontWeight: 700, letterSpacing: '-0.01em' }}>
+                            <h2 style={{ fontSize: '2.5rem', color: 'var(--color-hard)', marginBottom: '2rem', fontWeight: 'var(--font-weight-heavy)', letterSpacing: '-0.01em' }}>
                                 Waarom wij dit doen
                             </h2>
                             <div style={{ color: '#475569', fontSize: '1.125rem', lineHeight: 1.8, display: 'flex', flexDirection: 'column', gap: '2rem' }}>
@@ -56,7 +56,7 @@ const PlaceholderPage = () => {
                                     Wij zagen te veel vakmensen met prachtige projecten maar waardeloze websites. Websites die traag waren, niet gevonden werden, of eruitzagen alsof ze in 2010 waren gebouwd.
                                 </p>
                                 <p>
-                                    Daarom zijn wij HardReturn gestart. Wij combineren <strong>technisch vakmanschap</strong> (snelheid, SEO, data) met <strong>visueel meesterschap</strong> (design, fotografie, beleving).
+                                    Daarom zijn wij HardReturn gestart. Wij combineren technisch vakmanschap (snelheid, SEO, data) met visueel meesterschap (design, fotografie, beleving).
                                 </p>
                             </div>
 
@@ -65,19 +65,19 @@ const PlaceholderPage = () => {
                                     <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-blue-50 transition-colors">
                                         <Mail size={20} />
                                     </div>
-                                    <span style={{ fontSize: '1.1rem', fontWeight: 600 }}>info@hardreturn.nl</span>
+                                    <span style={{ fontSize: '1.1rem', fontWeight: 'var(--font-weight-heavy)' }}>info@hardreturn.nl</span>
                                 </a>
                                 <a href="tel:+310630433623" className="group flex items-center gap-4 text-slate-600 hover:text-green-600 transition-colors no-underline">
                                     <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-green-50 transition-colors">
                                         <Phone size={20} />
                                     </div>
-                                    <span style={{ fontSize: '1.1rem', fontWeight: 600 }}>+31 (06) 304 336 23</span>
+                                    <span style={{ fontSize: '1.1rem', fontWeight: 'var(--font-weight-heavy)' }}>+31 (06) 304 336 23</span>
                                 </a>
                                 <div className="flex items-center gap-4 text-slate-600">
                                     <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center">
                                         <MapPin size={20} />
                                     </div>
-                                    <span style={{ fontSize: '1.1rem', fontWeight: 600 }}>Arnhem, NL</span>
+                                    <span style={{ fontSize: '1.1rem', fontWeight: 'var(--font-weight-heavy)' }}>Arnhem, NL</span>
                                 </div>
                             </div>
                         </div>
@@ -94,7 +94,7 @@ const PlaceholderPage = () => {
                                 overflow: 'hidden'
                             }}>
 
-                                <h3 style={{ fontSize: '1.75rem', marginBottom: '2rem', fontWeight: 700, color: 'white' }}>Onze Belofte</h3>
+                                <h3 style={{ fontSize: '1.75rem', marginBottom: '2rem', fontWeight: 'var(--font-weight-heavy)', color: 'white' }}>Onze Belofte</h3>
                                 <ul style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                                     {[
                                         'Geen "uurtje-factuurtje", maar vaste prijzen.',
@@ -119,8 +119,6 @@ const PlaceholderPage = () => {
                     </div>
                 </div>
             </section>
-
-
         </div>
     );
 };

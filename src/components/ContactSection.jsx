@@ -67,7 +67,7 @@ const ContactSection = () => {
 
                 {/* Header */}
                 <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                    <div style={{ fontSize: '0.9rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700, marginBottom: '1rem' }}>
+                    <div style={{ fontSize: '0.9rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 'var(--font-weight-heavy)', marginBottom: '1rem' }}>
                         DIGITALE SCAN
                     </div>
                     {/* Progress Bar */}
@@ -89,11 +89,11 @@ const ContactSection = () => {
                             exit={{ opacity: 0, x: -20 }}
                             transition={{ duration: 0.3 }}
                         >
-                            <h2 style={{ fontSize: '2rem', textAlign: 'center', color: 'var(--color-hard)', marginBottom: '1rem' }}>
+                            <h2 style={{ textAlign: 'center', color: 'var(--color-hard-dark)', marginBottom: '1rem' }}>
                                 {stepsData[step].question}
                             </h2>
-                            <p style={{ textAlign: 'center', color: '#64748b', marginBottom: '3rem', fontSize: '1.1rem' }}>
-                                {step > 1 && <span style={{ color: 'var(--color-return)', fontWeight: 700, marginRight: '0.5rem' }}>✓</span>}
+                            <p style={{ textAlign: 'center', marginBottom: '3rem' }}>
+                                {step > 1 && <span style={{ color: 'var(--color-return)', fontWeight: 'var(--font-weight-heavy)', marginRight: '0.5rem' }}>✓</span>}
                                 {stepsData[step].description}
                             </p>
 
@@ -127,7 +127,7 @@ const ContactSection = () => {
                                     >
                                         {option.icon && <div style={{ color: 'var(--color-return)' }}>{option.icon}</div>}
                                         <div>
-                                            <div style={{ fontWeight: 700, fontSize: '1.1rem' }}>{option.label}</div>
+                                            <div style={{ fontWeight: 'var(--font-weight-heavy)', fontSize: '1.1rem' }}>{option.label}</div>
                                             {option.sub && <div style={{ fontSize: '0.9rem', color: '#64748b' }}>{option.sub}</div>}
                                         </div>
                                         <div style={{ marginLeft: 'auto', opacity: 0.3 }}>
@@ -144,12 +144,12 @@ const ContactSection = () => {
                             style={{ textAlign: 'center', padding: '3rem', background: '#f0fdf4', borderRadius: '1rem', border: '1px solid #bbf7d0' }}
                         >
                             <CheckCircle size={64} color="#16a34a" style={{ margin: '0 auto 1.5rem auto' }} />
-                            <h2 style={{ fontSize: '2rem', color: '#166534', marginBottom: '1rem' }}>Bericht ontvangen.</h2>
+                            <h2 style={{ color: '#166534', marginBottom: '1rem' }}>Bericht ontvangen.</h2>
                             <p style={{ fontSize: '1.2rem', color: '#15803d', marginBottom: '2rem' }}>
                                 We bellen je binnen 1 werkdag. <br />
-                                <span style={{ fontWeight: 700 }}>Geen sales-praatje, gewoon even kennismaken.</span>
+                                <span>Geen sales-praatje, gewoon even kennismaken.</span>
                             </p>
-                            <button className="btn" style={{ background: '#16a34a', color: 'white', padding: '1rem 2rem', borderRadius: '0.5rem', fontWeight: 700, border: 'none' }} onClick={() => setStep(1)}>
+                            <button className="btn" style={{ background: '#16a34a', color: 'white', padding: '1rem 2rem', borderRadius: '0.5rem', fontWeight: 'var(--font-weight-heavy)', border: 'none' }} onClick={() => setStep(1)}>
                                 Terug naar home
                             </button>
                         </motion.div>

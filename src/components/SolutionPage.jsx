@@ -49,10 +49,10 @@ const SolutionPage = () => {
                             display: 'inline-block',
                             padding: '0.5rem 1rem',
                             background: 'rgba(255,255,255,0.1)',
-                            borderRadius: '50px',
+                            borderRadius: 0,
                             color: 'var(--color-return)',
                             fontSize: '0.9rem',
-                            fontWeight: 600,
+                            fontWeight: 'var(--font-weight-heavy)',
                             marginBottom: '1.5rem'
                         }}>
                             {content.title} {content.icon}
@@ -82,13 +82,13 @@ const SolutionPage = () => {
                                 Wij bouwen specifieke modules die uw dagelijkse praktijk ondersteunen. Van project-showcases tot automatische offerte-aanvragen.
                             </p>
                             <ul style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                                <li className="flex items-center" style={{ gap: '1rem', fontWeight: 600, color: 'var(--color-hard)' }}>
+                                <li className="flex items-center" style={{ gap: '1rem', fontWeight: 'var(--font-weight-heavy)', color: 'var(--color-hard)' }}>
                                     <span style={{ color: 'var(--color-return)' }}>✓</span> Lead Kwalificatie
                                 </li>
-                                <li className="flex items-center" style={{ gap: '1rem', fontWeight: 600, color: 'var(--color-hard)' }}>
+                                <li className="flex items-center" style={{ gap: '1rem', fontWeight: 'var(--font-weight-heavy)', color: 'var(--color-hard)' }}>
                                     <span style={{ color: 'var(--color-return)' }}>✓</span> Portfolio Showcase
                                 </li>
-                                <li className="flex items-center" style={{ gap: '1rem', fontWeight: 600, color: 'var(--color-hard)' }}>
+                                <li className="flex items-center" style={{ gap: '1rem', fontWeight: 'var(--font-weight-heavy)', color: 'var(--color-hard)' }}>
                                     <span style={{ color: 'var(--color-return)' }}>✓</span> Lokale Vindbaarheid
                                 </li>
                             </ul>
@@ -99,7 +99,7 @@ const SolutionPage = () => {
                         <div style={{
                             background: '#f1f5f9',
                             height: '400px',
-                            borderRadius: '1rem',
+                            borderRadius: 0,
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',

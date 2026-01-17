@@ -40,8 +40,8 @@ const YieldCalculator = () => {
                     variants={containerVariants}
                     style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}
                 >
-                    <motion.h2 variants={itemVariants} style={{ color: 'var(--color-hard)', marginBottom: '1rem' }}>Wat zou je kunnen verdienen?</motion.h2>
-                    <motion.p variants={itemVariants} style={{ fontSize: '1.2rem', color: '#64748b', marginBottom: '3rem' }}>
+                    <motion.h2 variants={itemVariants} style={{ color: 'var(--color-hard-dark)', marginBottom: '1rem' }}>Wat zou je kunnen verdienen?</motion.h2>
+                    <motion.p variants={itemVariants} style={{ marginBottom: '3rem' }}>
                         Geen giswerk. Je geeft 3 getallen in, we laten zien waar je zou kunnen staan.
                     </motion.p>
                 </motion.div>
@@ -51,7 +51,7 @@ const YieldCalculator = () => {
                     whileInView="visible"
                     viewport={{ once: true, margin: "-10%" }}
                     variants={containerVariants}
-                    style={{ background: 'white', padding: '3rem', borderRadius: '8px', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.05)' }}
+                    style={{ background: 'white', padding: '3rem', borderRadius: 0, boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.05)' }}
                 >
                     <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem' }}>
 
@@ -60,8 +60,8 @@ const YieldCalculator = () => {
                             {/* Visitors Slider */}
                             <div style={{ marginBottom: '2rem' }}>
                                 <div className="flex justify-between items-end" style={{ marginBottom: '0.5rem' }}>
-                                    <label style={{ fontWeight: 600 }}>Bezoekers / maand</label>
-                                    <span style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--color-hard)' }}>{visitors}</span>
+                                    <label style={{ fontWeight: 'var(--font-weight-heavy)' }}>Bezoekers / maand</label>
+                                    <span style={{ fontSize: '1.1rem', fontWeight: 'var(--font-weight-heavy)', color: 'var(--color-hard)' }}>{visitors}</span>
                                 </div>
                                 <input
                                     type="range"
@@ -77,8 +77,8 @@ const YieldCalculator = () => {
                             {/* Order Value Slider */}
                             <div style={{ marginBottom: '2rem' }}>
                                 <div className="flex justify-between items-end" style={{ marginBottom: '0.5rem' }}>
-                                    <label style={{ fontWeight: 600 }}>Orderwaarde</label>
-                                    <span style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--color-hard)' }}>€{orderValue}</span>
+                                    <label style={{ fontWeight: 'var(--font-weight-heavy)' }}>Orderwaarde</label>
+                                    <span style={{ fontSize: '1.1rem', fontWeight: 'var(--font-weight-heavy)', color: 'var(--color-hard)' }}>€{orderValue}</span>
                                 </div>
                                 <input
                                     type="range"
@@ -94,8 +94,8 @@ const YieldCalculator = () => {
                             {/* Current Conversion Slider */}
                             <div style={{ marginBottom: '2rem' }}>
                                 <div className="flex justify-between items-end" style={{ marginBottom: '0.5rem' }}>
-                                    <label style={{ fontWeight: 600 }}>Conversie %</label>
-                                    <span style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--color-hard)' }}>{conversion}%</span>
+                                    <label style={{ fontWeight: 'var(--font-weight-heavy)' }}>Conversie %</label>
+                                    <span style={{ fontSize: '1.1rem', fontWeight: 'var(--font-weight-heavy)', color: 'var(--color-hard)' }}>{conversion}%</span>
                                 </div>
                                 <input
                                     type="range"
@@ -112,14 +112,14 @@ const YieldCalculator = () => {
                             </div>
 
                             {/* Calculation Explanation */}
-                            <div style={{ background: '#f1f5f9', padding: '1rem', borderRadius: '4px', fontSize: '0.9rem', borderLeft: '3px solid var(--color-return)' }}>
+                            <div style={{ background: '#f1f5f9', padding: '1rem', borderRadius: 0, fontSize: '0.9rem', borderLeft: '3px solid var(--color-return)' }}>
                                 <div className="flex justify-between" style={{ marginBottom: '0.5rem' }}>
                                     <span>Huidige Omzet:</span>
                                     <div style={{ color: '#64748b', fontSize: '0.9rem' }}>€{currentRevenue.toLocaleString('nl-NL')}</div>
                                 </div>
                                 <div className="flex justify-between text-strong" style={{ color: 'var(--color-hard-dark)' }}>
                                     <span>Optimale Performance (+35%):</span>
-                                    <span><strong>€{newRevenue.toLocaleString('nl-NL')}</strong></span>
+                                    <span>€{newRevenue.toLocaleString('nl-NL')}</span>
                                 </div>
                             </div>
                         </motion.div>
@@ -127,8 +127,8 @@ const YieldCalculator = () => {
                         {/* Result */}
                         <motion.div variants={itemVariants} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center', position: 'relative' }}>
                             {/* Vertical divider separate from grid gap if needed, but grid gap handles spacing well */}
-                            <div style={{ fontSize: '1.1rem', color: '#64748b', marginBottom: '1rem' }}>Schatting extra omzet</div>
-                            <div style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)', fontWeight: 800, color: 'var(--color-return)', lineHeight: 1, marginBottom: '0.5rem' }}>
+                            <div style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>Schatting extra omzet</div>
+                            <div style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)', fontWeight: 'var(--font-weight-heavy)', color: 'var(--color-return)', lineHeight: 1, marginBottom: '0.5rem' }}>
                                 +€{extraRevenue.toLocaleString('nl-NL')}
                             </div>
                             <div style={{ fontSize: '0.9rem', color: '#94a3b8', marginBottom: '2rem' }}>per maand</div>
@@ -137,18 +137,18 @@ const YieldCalculator = () => {
                                 background: '#fff7ed',
                                 color: '#c2410c',
                                 padding: '0.5rem 1rem',
-                                borderRadius: '99px',
+                                borderRadius: 0,
                                 display: 'inline-block',
                                 margin: '0 auto 2rem auto',
                                 fontSize: '0.9rem',
-                                fontWeight: 600
+                                fontWeight: 'var(--font-weight-heavy)'
                             }}>
                                 Jaarlijks: +€{(extraRevenue * 12).toLocaleString('nl-NL')}
                             </div>
 
-                            <button className="btn btn-primary" style={{ marginTop: 'auto' }}>
-                                Bereken je potentieel
-                            </button>
+                            <a href="#contact" className="btn btn-primary" style={{ marginTop: 'auto', textDecoration: 'none' }}>
+                                Bespreek uw potentieel
+                            </a>
                             <div style={{ fontSize: '0.8rem', color: '#cbd5e1', marginTop: '1rem' }}>
                                 *Dit is gebaseerd op wat we gemiddeld zien. Jouw site is anders, dus jouw resultaat ook.
                             </div>

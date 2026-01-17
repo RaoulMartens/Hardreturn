@@ -9,7 +9,11 @@ import heroBg from '../assets/hero.webp';
 const Hero = () => {
   const containerRef = useRef(null);
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 1000], [0, 400]); // Parallax effect
+
+  // Subtle parallax - reduced movement for elegance
+  const y = useTransform(scrollY, [0, 1000], [0, 150]);
+  // Gentle zoom-in effect for depth
+  const scale = useTransform(scrollY, [0, 800], [1, 1.1]);
 
   const words = ['Meetbaar', 'Zichtbaar', 'Winstgevend'];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -30,9 +34,9 @@ const Hero = () => {
       position: 'relative',
       overflow: 'hidden'
     }}>
-      {/* Background Image with Overlay */}
-      <motion.div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0, y }}>
-        <img src={heroBg} alt="" style={{ width: '100%', height: '110%', objectFit: 'cover', opacity: 0.2, filter: 'grayscale(100%)', marginTop: '-5%' }} />
+      {/* Background Image with Overlay - Subtle Parallax + Zoom */}
+      <motion.div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0, y, scale }}>
+        <img src={heroBg} alt="" style={{ width: '100%', height: '120%', objectFit: 'cover', opacity: 0.2, filter: 'grayscale(100%)', marginTop: '-10%' }} />
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'linear-gradient(to right, rgb(2,6,23,0.8), rgba(2,6,23,0.6), rgba(2,6,23,0.4))' }} />
       </motion.div>
 
@@ -47,13 +51,12 @@ const Hero = () => {
           alignItems: 'center'
         }}>
 
-          <h1 style={{
+          <h1 className="h1-xl" style={{
             color: 'white',
             marginBottom: '2rem',
-            lineHeight: 1.1,
-            fontSize: 'clamp(2rem, 5.5vw, 5rem)',
             textAlign: 'center',
-            width: '100%'
+            width: '100%',
+            textTransform: 'none'
           }}>
             <span className="block whitespace-normal sm:whitespace-nowrap">
               <TextEffect as="span" per="word" preset="blur" delay={0.1}>
@@ -62,7 +65,7 @@ const Hero = () => {
             </span>
 
             <div
-              className="grid gap-x-0 sm:gap-x-2"
+              className="grid gap-x-0 sm:gap-x-1"
               style={{
                 gridTemplateColumns: 'auto auto',
                 marginTop: '0.5rem',
@@ -102,7 +105,7 @@ const Hero = () => {
 
           <div style={{ maxWidth: '700px', marginBottom: '3rem' }}>
             <TextEffect per="word" preset="blur" delay={0.4} className="text-lg text-slate-400">
-              We bouwen websites die er goed uitzien én die werken.
+              We bouwen websites die er goed uitzien én goed werken.
             </TextEffect>
           </div>
 
@@ -123,7 +126,7 @@ const Hero = () => {
                 hover: { y: -3 }
               }}
             >
-              Plan een Strategische Groeisessie
+              Plan een Groeisessie
               <motion.span
                 variants={{
                   hover: { x: 5, opacity: 1 }

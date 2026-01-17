@@ -6,8 +6,8 @@ const PortfolioSection = () => {
             <div className="container">
                 <header style={{ marginBottom: '4rem', display: 'flex', justifyContent: 'space-between', alignItems: 'end' }}>
                     <div>
-                        <h2 style={{ color: 'var(--color-hard)' }}>Gerealiseerde Contructies</h2>
-                        <p style={{ color: '#64748b' }}>Winstgevend webdesign voor technische sectoren.</p>
+                        <h2 style={{ color: 'var(--color-hard-dark)' }}>Gerealiseerde Contructies</h2>
+                        <p>Winstgevend webdesign voor technische sectoren.</p>
                     </div>
                     <div>
                         <button className="btn btn-secondary" disabled style={{ opacity: 0.5, cursor: 'not-allowed' }}>Binnenkort meer</button>
@@ -36,7 +36,7 @@ const PortfolioSection = () => {
                                 textTransform: 'uppercase',
                                 letterSpacing: '0.1em',
                                 fontSize: '0.9rem',
-                                fontWeight: 600
+                                fontWeight: 'var(--font-weight-heavy)'
                             }}>
                                 Binnenkort Live
                             </span>
@@ -55,8 +55,8 @@ const PortfolioSection = () => {
                             </div>
                         </div>
                         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '2rem', background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)' }}>
-                            <h3 style={{ color: 'white', fontSize: '1.5rem', filter: 'blur(6px)', userSelect: 'none' }}>Project Titel Verborgen</h3>
-                            <div style={{ color: 'var(--color-return)', fontWeight: 600, filter: 'blur(6px)', userSelect: 'none' }}>+XX% Resultaat behaald</div>
+                            <h3 style={{ color: 'white', filter: 'blur(6px)', userSelect: 'none' }}>Project Titel Verborgen</h3>
+                            <div style={{ color: 'var(--color-return)', fontWeight: 'var(--font-weight-heavy)', filter: 'blur(6px)', userSelect: 'none' }}>+XX% Resultaat behaald</div>
                         </div>
                     </div>
 
@@ -80,7 +80,7 @@ const PortfolioSection = () => {
                                 textTransform: 'uppercase',
                                 letterSpacing: '0.1em',
                                 fontSize: '0.9rem',
-                                fontWeight: 600
+                                fontWeight: 'var(--font-weight-heavy)'
                             }}>
                                 Binnenkort Live
                             </span>
@@ -99,8 +99,8 @@ const PortfolioSection = () => {
                             </div>
                         </div>
                         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '2rem', background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)' }}>
-                            <h3 style={{ color: 'white', fontSize: '1.5rem', filter: 'blur(6px)', userSelect: 'none' }}>Project Titel Verborgen</h3>
-                            <div style={{ color: 'var(--color-return)', fontWeight: 600, filter: 'blur(6px)', userSelect: 'none' }}>Resultaat Verborgen</div>
+                            <h3 style={{ color: 'white', filter: 'blur(6px)', userSelect: 'none' }}>Project Titel Verborgen</h3>
+                            <div style={{ color: 'var(--color-return)', fontWeight: 'var(--font-weight-heavy)', filter: 'blur(6px)', userSelect: 'none' }}>Resultaat Verborgen</div>
                         </div>
                     </div>
 
