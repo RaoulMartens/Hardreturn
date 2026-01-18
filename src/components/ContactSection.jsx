@@ -62,7 +62,7 @@ const ContactSection = () => {
     };
 
     return (
-        <section id="contact" className="section bg-white" style={{ padding: '6rem 0' }}>
+        <section id="contact" className="section bg-white">
             <div className="container" style={{ maxWidth: '800px' }}>
 
                 {/* Header */}

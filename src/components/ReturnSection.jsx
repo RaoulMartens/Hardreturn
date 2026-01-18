@@ -39,7 +39,7 @@ const BlueprintTile = ({ children, style, label, delay = 0, className }) => (
 
 const ReturnSection = () => {
     return (
-        <section id="return" className="section bg-alt" style={{ padding: '6rem 0', background: '#f8fafc' }}>
+        <section id="return" className="section bg-alt">
             <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1rem' }}>
                 <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
                     <h2 style={{ marginBottom: '1rem', color: 'var(--color-hard-dark)', fontWeight: 'var(--font-weight-bold)' }}>

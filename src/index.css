@@ -113,7 +113,8 @@
   --spacing-sm: 1rem;
   --spacing-md: 2rem;
   --spacing-lg: 4rem;
-  --spacing-xl: 8rem;
+  --spacing-xl: 12rem;
+  --spacing-2xl: 16rem;
 }
 
 * {
@@ -244,7 +245,7 @@ button {
 }
 
 .section {
-  padding: var(--spacing-xl) 0;
+  padding: 10rem 0;
 }
 
 .bg-hard {
@@ -258,9 +259,9 @@ button {
 
 .site-header {
   height: clamp(3.2rem, 8vh, 3.8rem);
-  background-color: rgba(15, 23, 42, 0.88);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+  background-color: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   position: fixed;
   top: 1.5rem;
   left: 50%;
@@ -268,10 +269,11 @@ button {
   width: min(75%, 980px);
   z-index: 2000;
   /* Higher than dropdown to prevent overlap */
-  border: none;
-  border-radius: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0 !important;
   box-shadow: 0 15px 50px -10px rgba(0, 0, 0, 0.5);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  isolation: isolate;
 }
 
 .nav-desktop {
@@ -310,12 +312,12 @@ button {
   position: absolute;
   top: calc(100% + 1.8rem);
   left: 50%;
-  background-color: rgba(15, 23, 42, 0.92);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  border: none;
-  border-radius: 0;
-  min-width: 280px;
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0 !important;
+  min-width: 300px;
   padding: 0;
   box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.7);
   z-index: 1000;
@@ -325,33 +327,38 @@ button {
 .dropdown-menu::before {
   content: '';
   position: absolute;
-  top: -2rem;
+  top: -2.5rem;
   left: 0;
   right: 0;
-  height: 2rem;
+  height: 2.5rem;
 }
 
 .dropdown-container {
   padding: 0.75rem 0;
   border-radius: inherit;
-  overflow: hidden;
+  background: transparent;
 }
 
 .dropdown-item {
   display: block;
-  padding: 0.875rem 1.75rem;
+  padding: 1rem 2rem;
   color: #94a3b8;
   font-size: 0.875rem;
   font-weight: 500;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
 }
 
 .dropdown-item:hover {
-  background-color: rgba(255, 255, 255, 0.04);
+  background-color: rgba(255, 255, 255, 0.05);
   color: white;
-  padding-left: 2rem;
+  padding-left: 2.25rem;
 }
 
 
@@ -438,9 +445,296 @@ button {
   scrollbar-width: none;
 }
 
-/* Page loader spinner animation */
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* ========================================
+   Scroll Stack Component
+   ======================================== */
+.scroll-stack-scroller {
+  position: relative;
+  width: 100%;
+}
+
+.scroll-stack-scroller.window-scroll {
+  height: auto;
+  overflow: visible;
+}
+
+.scroll-stack-inner {
+  padding: 10rem 0;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding-left: var(--spacing-sm);
+  padding-right: var(--spacing-sm);
+}
+
+.scroll-stack-card {
+  position: relative;
+  transform-origin: top center;
+  will-change: transform, filter;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  box-shadow: 0 25px 100px -12px rgba(0, 0, 0, 0.5);
+  height: 70vh;
+  min-height: 450px;
+  max-height: 750px;
+  width: 100%;
+  margin-bottom: 0;
+  /* Managed by JS spacing */
+  padding: 0;
+  border-radius: 0 !important;
+  box-sizing: border-box;
+  background: var(--color-hard);
+  overflow: hidden;
+}
+
+.scroll-stack-card>div {
+  height: 100%;
+  width: 100%;
+}
+
+.scroll-stack-end {
+  width: 100%;
+  height: 1px;
+}
+
+@media (max-width: 768px) {
+  .scroll-stack-card {
+    height: auto;
+    min-height: 400px;
+  }
+
+  .scroll-stack-card>div {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ========================================
+   WIP Projects Section
+   ======================================== */
+.wip-project-card {
+  height: 100%;
+  width: 100%;
+  background: var(--color-hard-dark);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-body);
+}
+
+.wip-grid-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 1;
+}
+
+.wip-content {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.wip-info {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(10px);
+}
+
+.wip-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+}
+
+.wip-meta-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.wip-status-badge {
+  background: rgba(249, 115, 22, 0.1);
+  color: var(--color-return);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0;
+  font-family: monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(249, 115, 22, 0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.wip-status-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--color-return);
+  border-radius: 50%;
+  animation: wip-pulse 2s infinite;
+}
+
+.wip-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.wip-description {
+  color: #94a3b8;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 40ch;
+}
+
+.wip-progress-container {
+  margin-top: auto;
+  width: 100%;
+}
+
+.wip-progress-label {
+  display: flex;
+  justify-content: space-between;
+  color: #64748b;
+  font-family: monospace;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.wip-progress-bar {
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.wip-progress-fill {
+  height: 100%;
+  background: var(--color-return);
+  position: relative;
+}
+
+.wip-visual {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: #020617;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wip-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+  filter: blur(15px) grayscale(100%) contrast(1.1);
+  transform: scale(1.1);
+  transition: all 0.7s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.wip-image-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to right, rgba(15, 23, 42, 1) 0%, rgba(15, 23, 42, 0.4) 100%);
+  z-index: 2;
+}
+
+.wip-project-card:hover .wip-image {
+  opacity: 0.5;
+  filter: blur(20px) grayscale(100%);
+  transform: scale(1.15);
+}
+
+.wip-action-area {
+  margin-top: 3rem;
+}
+
+.wip-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #64748b;
+  /* Muted color */
+  padding: 1rem 2rem;
+  font-family: monospace;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.85rem;
+}
+
+.wip-btn:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: white;
+}
+
+@keyframes wip-pulse {
+  0% {
+    opacity: 0.5;
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4);
+  }
+
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 0 4px rgba(249, 115, 22, 0);
+  }
+
+  100% {
+    opacity: 0.5;
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  .wip-content {
+    grid-template-columns: 1fr;
+  }
+
+  .wip-info {
+    border-right: none;
+    padding: 2rem;
+  }
+
+  .wip-visual {
+    min-height: 250px;
+    order: -1;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .wip-title {
+    font-size: 1.75rem;
   }
 }

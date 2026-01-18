@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <footer className="bg-hard" style={{ padding: '4rem 0', marginTop: '4rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+        <footer className="bg-hard" style={{ padding: '4rem 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
             <div className="container footer-grid">
                 {/* Column 1: Brand */}
                 <div className="footer-col">
